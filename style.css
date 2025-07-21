@@ -1,19 +1,176 @@
-h1 {
-    background: cyan;
+.page {
+    width: 60vw;
+    height: auto;
+    border: 1px solid #EE1166;
+    margin-left: 20%;
+    transition: all 0.5s;
+    text-align: center;
 }
 
-@media (max-width:800px) {
-    #qrCodeImg {
+nav ul {
+    padding-left: 22%;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    padding-left: 2%;
+}
+
+button {
+    border-color: #88DD44;
+    border-radius: 10px;
+    border-width: 1.5px;
+    font-weight: bold;
+}
+
+button:Hover {
+    border-color: #EE1166;
+}
+
+#page1 {
+    background: #FF7721
+}
+
+button.btn1 {
+    background-color: #FFCDAC;
+    color: #FF7721;
+}
+
+button.btn1:hover {
+    background-color: #FF7721;
+    color: #FFCDAC;
+}
+
+#page2 {
+    background: #0077DD;
+}
+
+button.btn2 {
+    background-color: #99CDFF;
+    color: #0077DD;
+}
+
+button.btn2:hover {
+    background-color: #0077DD;
+    color: #99CDFF;
+}
+
+#page3 {
+    background: #FF679A
+}
+
+button.btn3 {
+    background-color: #FFA9CC;
+    color: #FF679A;
+}
+
+button.btn3:hover {
+    background-color: #FF679A;
+    color: #FFA9CC;
+}
+
+#page4 {
+    background: #00BBDC
+}
+
+button.btn4 {
+    background-color: #9AEEDE;
+    color: #00BBDC;
+}
+
+button.btn4:hover {
+    background-color: #00BBDC;
+    color: #9AEEDE;
+}
+
+/*CSS for responsive menu*/
+#hamIcon {
+    display: none;
+    width: 25px;
+}
+
+@media screen and (max-width:800px) {
+
+    /*make a menu items vertical*/
+    nav ul li {
+        display: block;
+        margin: 0.2em 0.1em;
+    }
+
+    /* unhide menu icon */
+    #hamIcon {
+        display: block;
+    }
+
+    /*hide the menu item list*/
+    nav ul {
         display: none;
+        padding-left: 0%;
+    }
+}
+
+/*to unhide menu items*/
+.menuShow {
+    display: block;
+}
+
+.shrink {
+    width: 5vw;
+    opacity: 0;
+}
+
+
+/* --------------------------------------- */
+#ball {
+    background: cyan;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s;
+    transition: border-radius 1s;
+}
+
+#ball.hover {
+    background: #EE1166;
+    border-radius: 25%;
+}
+
+#box {
+    width: 800px;
+    height: 600px;
+    border: solid black 2px
+}
+
+@keyframes ballFrames {
+
+    /*keyframes to change properties*/
+    0% {
+        font-size: 0.4em;
+        width: 50px
     }
 
-    /*hide QR
-code when its mobile size */
-    h1 {
-        background: lightgreen;
+    25% {
+        font-size: 1em;
+        width: 80px
     }
 
-    h1::after {
-        content: "(mobile)";
+    50% {
+        font-size: 2em;
+        width: 150px
     }
+
+    100% {
+        font-size: 0.2em;
+        width: 50px
+    }
+}
+
+.ballAnim {
+    animation: ballFrames 1s;
+    /*run animation for 1s*/
 }
