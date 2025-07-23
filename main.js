@@ -4,6 +4,7 @@ const page2btn = document.querySelector("#page2btn");
 const page3btn = document.querySelector("#page3btn");
 const page4btn = document.querySelector("#page4btn");
 var allpages = document.querySelectorAll(".page");
+let currentPage = null;
 
 //select all subtopic pages
 function hideall() { //function to hide all pages
@@ -14,14 +15,39 @@ function hideall() { //function to hide all pages
 }
 
 function show(pgno) { //function to show selected page no
-    hideall();
-    let onepage = document.querySelector("#page" + pgno);
-    onepage.style.display = "block";
+    // hideall();
+    // let onepage = document.querySelector("#page" + pgno);
+    // onepage.style.display = "block";
 
-    // let block code go first then remove the shrink [aka let it transition]
-    setTimeout(function() {
-        onepage.classList.remove("shrink");
-    }, 10);
+    // // let block code go first then remove the shrink [aka let it transition]
+    // setTimeout(function() {
+    //     onepage.classList.remove("shrink");
+    // }, 10);
+    const pageId = "page" + pgno;
+    const selectedPage = document.querySelector("#" + pageId);
+
+    if (currentPage === selectedPage) {
+        // Animate closing
+        selectedPage.classList.add("shrink");
+
+        // Wait for the transition to finish before hiding
+        selectedPage.addEventListener("transitionend", function handler() {
+            selectedPage.style.display = "none";
+            selectedPage.removeEventListener("transitionend", handler);
+        });
+
+        currentPage = null;
+    } else {
+        // Animate opening
+        hideall(); // will add shrink + hide all pages
+        selectedPage.style.display = "block";
+
+        setTimeout(function () {
+            selectedPage.classList.remove("shrink");
+        }, 10);
+
+        currentPage = selectedPage;
+    }
 }
 /*Listen for clicks on the buttons, assign anonymous
 eventhandler functions to call show function*/
@@ -53,6 +79,18 @@ function toggleMenus() { /*open and close menu*/
         hamBtn.innerHTML = "Open Menu"; //change button text open menu
     }
 }
+
+const btnFS=document.querySelector("#btnFS");
+const btnWS=document.querySelector("#btnWS");
+btnFS.addEventListener("click",enterFullscreen);
+btnWS.addEventListener("click",exitFullscreen);
+function enterFullscreen() { //must be called by user generated event
+document.documentElement.requestFullscreen();
+}
+function exitFullscreen() {
+document.exitFullscreen();
+}
+
 
 
 /*find references to all the buttons and ball */

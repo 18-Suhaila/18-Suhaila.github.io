@@ -3,34 +3,44 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Week14??</title>
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script src='main.js' defer></script>
 </head>
 
 <body>
-    <header>
-        <h1>Animation</h1>
+    <div class="topSection">
+        <div class="empty"></div>
+        <div class="middle">⋆⭒˚｡⋆ ₊˚.⋆☾⋆⁺₊✧ ─── ⋆⋅☆⋅⋆ ─── ✧₊⁺⋆☾⋆.˚₊⋆｡˚⭒⋆</div>
+        <div class="empty"></div>
+    </div>
+
+    <header class="grid1">
+        <div class="animGrid">
+            <h1>Animation</h1>
+            <section>
+                Animation is an illusion of movement, composed of a sequence of still images or frames that are
+                shown at a certain rate, which will make the subject appear as if it is moving. This can be
+                done through several means such as using drawings, models or digital tools.
+            </section>
+        </div>
     </header>
 
-    <section>
-        Animation is an illusion of movement, composed of a sequence of still images or frames that are
-        shown at a certain rate, which will make the subject appear as if it is moving. This can be
-        done through several means such as using drawings, models or digital tools.
-    </section>
-
-    <nav> <!--menu system-->
+    <nav class="grid2"> <!--menu system-->
         <br>
         <img src="images/hamIcon.png" id="hamIcon">
         <ul>
             <li><button class="btn1" id="page1btn">2D Animation</button></li>
             <li><button class="btn2" id="page2btn">3D Animation</button></li>
-            <li><button class="btn3" id="page3btn">Motion Graphics Animation</button></li>
+            <li><button class="btn3" id="page3btn">Motion Graphics <br>Animation</button></li>
             <li><button class="btn4" id="page4btn">Stop Motion Animation</button></li>
         </ul>
+        <button class="thebtn" id="btnFS">Fullscreen</button>
+        <button class="thebtn" id="btnWS">Exit FS</button>
     </nav>
-    <main id="pagecontainer">
+
+    <main class="grid3" id="pagecontainer">
         <section class="page" id="page1">
             <!-- <button id="leftBtn">Left</button>
             <button id="rightBtn">Right</button>
@@ -198,19 +208,23 @@
 
                 <h4>Pixilation</h4>
                 <p>
-                    Pixilation is a technique in which live actors are used as a frame-by-frame subject 
+                    Pixilation is a technique in which live actors are used as a frame-by-frame subject
                     in an animated film. Is often used as a way to blend live actors with animated ones in a movie.
                 </p>
 
                 <h4>Cutout</h4>
                 <p>
-                    Cutout animation is a technique using flat characters, props and backgrounds 
-                    cut from materials such as paper, card, stiff fabric or photographs. The props would be cut out 
+                    Cutout animation is a technique using flat characters, props and backgrounds
+                    cut from materials such as paper, card, stiff fabric or photographs. The props would be cut out
                     and used as puppets for stop motion.
                 </p>
             </article>
         </section>
     </main>
+
+    <footer>
+        02_NurSuhaila_244567P
+    </footer>
 </body>
 
 </html>

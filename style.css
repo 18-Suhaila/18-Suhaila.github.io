@@ -1,88 +1,183 @@
-.page {
-    width: 60vw;
-    height: auto;
-    border: 1px solid #EE1166;
-    margin-left: 20%;
-    transition: all 0.5s;
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* H[EADER] STUFF*/
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* DIFFERENT PARTS [BODY etc.]*/
+.topSection {
+    grid-row: 1;
+}
+div.empty{
+    padding: 0.5rem;
+    background: #1a112e;
+}
+div.middle{
+    padding: 1rem;
+    background: #3b2a4f;
+    font-size: 25.9px;
+    text-align: center;
+    padding-top: 1%;
+    color: #1a112e;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    box-sizing: border-box;
+    background: #1a112e;
+}
+
+header{
     text-align: center;
 }
 
+footer{
+    text-align: center;
+    color: #343195
+}
+
+/* GRID STUFFS */
+.grid1 {
+    padding: 4rem;
+    /* background: #2e325b; */
+    background-image:url(../02_NurSuhaila_Prac11/images/bg.jpg);
+    background-size:auto;
+    color: #2e325b;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.animGrid{
+    grid-column: 4/6;
+    text-align: left;
+}
+
+.grid2 {
+    padding: 1rem;
+    background: #1a112e;
+}
+
+/*
+.grid3 {
+    background: #a6ffd1
+} */
+
+/* NAV STUFF */
 nav ul {
-    padding-left: 22%;
-    list-style-type: none;
+    padding-left: 24vw;
 }
 
 nav ul li {
     display: inline;
-    padding-left: 2%;
+    padding-left: 1.5vw;
+}
+
+main ul li {
+    list-style-type: none;
+    margin-right: 5%;
+    margin-bottom: 2%;
+}
+
+/* BUTTONS/PAGES STUFF */
+.page {
+    width: auto;
+    height: 210vh;
+    border: 1px solid #EE1166;
+    transition: all 0.5s;
+    text-align: center;
 }
 
 button {
-    border-color: #88DD44;
+    border-color: #2e325b;
     border-radius: 10px;
     border-width: 1.5px;
     font-weight: bold;
+    margin-bottom: 5px;
+}
+
+button.btn1, button.btn2, button.btn3, button.btn4{
+    height: 100px;
+    width: 100px;
+    vertical-align: middle;
+    margin-left: 30px;
 }
 
 button:Hover {
     border-color: #EE1166;
 }
 
+/* PAGE 1 STUFF */
 #page1 {
     background: #FF7721
 }
-
 button.btn1 {
-    background-color: #FFCDAC;
+    background-color: #FBE7C6;
     color: #FF7721;
 }
-
 button.btn1:hover {
     background-color: #FF7721;
-    color: #FFCDAC;
+    color: #FBE7C6;
 }
 
+/* PAGE 2 STUFF */
 #page2 {
     background: #0077DD;
 }
-
 button.btn2 {
     background-color: #99CDFF;
     color: #0077DD;
 }
-
 button.btn2:hover {
     background-color: #0077DD;
     color: #99CDFF;
 }
 
+/* PAGE 3 STUFF */
 #page3 {
     background: #FF679A
 }
-
 button.btn3 {
     background-color: #FFA9CC;
     color: #FF679A;
 }
-
 button.btn3:hover {
     background-color: #FF679A;
     color: #FFA9CC;
 }
 
+/* PAGE 4 STUFF */
 #page4 {
     background: #00BBDC
 }
-
 button.btn4 {
     background-color: #9AEEDE;
     color: #00BBDC;
 }
-
 button.btn4:hover {
     background-color: #00BBDC;
     color: #9AEEDE;
 }
+
+button.thebtn {
+    margin-left: 23.5rem;
+    color: #3D145B;
+    background: #f9b7ff;
+}
+
 
 /*CSS for responsive menu*/
 #hamIcon {
@@ -91,11 +186,9 @@ button.btn4:hover {
 }
 
 @media screen and (max-width:800px) {
-
     /*make a menu items vertical*/
     nav ul li {
-        display: block;
-        margin: 0.2em 0.1em;
+        margin: 0.5em;
     }
 
     /* unhide menu icon */
@@ -108,6 +201,10 @@ button.btn4:hover {
         display: none;
         padding-left: 0%;
     }
+
+    button.thebtn {
+        margin-left: 25%;
+    }
 }
 
 /*to unhide menu items*/
@@ -116,7 +213,7 @@ button.btn4:hover {
 }
 
 .shrink {
-    width: 5vw;
+    height: 5vh;
     opacity: 0;
 }
 
@@ -173,4 +270,9 @@ button.btn4:hover {
 .ballAnim {
     animation: ballFrames 1s;
     /*run animation for 1s*/
+}
+
+.clearfloat {
+    float: none;
+    /*resets float*/
 }
