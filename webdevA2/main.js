@@ -3,8 +3,11 @@ const page1btn = document.querySelector("#page1btn");
 const page2btn = document.querySelector("#page2btn");
 const page3btn = document.querySelector("#page3btn");
 const page4btn = document.querySelector("#page4btn");
+const pagequizbtn = document.querySelector("#quizbtn");
+
 var allpages = document.querySelectorAll(".page");
 let currentPage = null;
+let quizVisible = false;
 
 //select all subtopic pages
 function hideall() { //function to hide all pages
@@ -49,6 +52,26 @@ function show(pgno) { //function to show selected page no
         currentPage = selectedPage;
     }
 }
+
+function toggleTheQuiz() {
+    const quiz = document.querySelector("#quizpg");
+
+    if (quizVisible) {
+        quiz.classList.add("shrink");
+        quiz.addEventListener("transitionend", function handler() {
+            quiz.style.display = "none";
+            quiz.removeEventListener("transitionend", handler);
+        });
+        quizVisible = false;
+    } else {
+        quiz.style.display = "block";
+        setTimeout(() => {
+            quiz.classList.remove("shrink");
+        }, 10);
+        quizVisible = true;
+    }
+}
+
 /*Listen for clicks on the buttons, assign anonymous
 eventhandler functions to call show function*/
 page1btn.addEventListener("click", function () {
@@ -63,7 +86,12 @@ page3btn.addEventListener("click", function () {
 page4btn.addEventListener("click", function () {
     show(4);
 });
+pagequizbtn.addEventListener("click", function () {
+    toggleTheQuiz()
+});
 hideall();
+document.querySelector("#quizpg").style.display = "none";
+document.querySelector("#quizpg").classList.add("shrink");
 
 /*JS for hamMenu */
 const hamBtn = document.querySelector("#hamIcon");
@@ -80,15 +108,15 @@ function toggleMenus() { /*open and close menu*/
     }
 }
 
-const btnFS=document.querySelector("#btnFS");
-const btnWS=document.querySelector("#btnWS");
-btnFS.addEventListener("click",enterFullscreen);
-btnWS.addEventListener("click",exitFullscreen);
+const btnFS = document.querySelector("#btnFS");
+const btnWS = document.querySelector("#btnWS");
+btnFS.addEventListener("click", enterFullscreen);
+btnWS.addEventListener("click", exitFullscreen);
 function enterFullscreen() { //must be called by user generated event
-document.documentElement.requestFullscreen();
+    document.documentElement.requestFullscreen();
 }
 function exitFullscreen() {
-document.exitFullscreen();
+    document.exitFullscreen();
 }
 
 

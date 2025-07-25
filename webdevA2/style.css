@@ -93,7 +93,7 @@ main ul li {
 
 .maingrid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
 }
 
@@ -122,6 +122,15 @@ main ul li {
 
 /* BUTTONS/PAGES STUFF */
 .page {
+    width: auto;
+    height: 90vh;
+    transition: all 0.5s;
+    text-align: center;
+    background-color: #E8DAF0;
+    color: #7a70a7;
+}
+
+.quiz {
     width: auto;
     height: 90vh;
     transition: all 0.5s;
@@ -287,8 +296,8 @@ button.thebtn:hover {
     }
 
     .respvid {
-        width: 250px;
-        height: 120px;
+        width: 200px;
+        height: 150px;
     }
 }
 
