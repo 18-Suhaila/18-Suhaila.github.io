@@ -12,6 +12,8 @@
 <body>
     <div class="topSection">
         <div class="empty"></div>
+        <button class="thebtn" id="btnFS">Fullscreen</button>
+        <button class="thebtn" id="btnWS">Exit FS</button>
         <div class="middle">⋆⭒˚｡⋆ ₊˚.⋆☾⋆⁺₊✧ ─── ⋆⋅☆⋅⋆ ─── ✧₊⁺⋆☾⋆.˚₊⋆｡˚⭒⋆</div>
         <div class="empty"></div>
     </div>
@@ -36,8 +38,6 @@
             <li><button class="btn3" id="page3btn">Motion Graphics <br>Animation</button></li>
             <li><button class="btn4" id="page4btn">Stop Motion Animation</button></li>
         </ul>
-        <button class="thebtn" id="btnFS">Fullscreen</button>
-        <button class="thebtn" id="btnWS">Exit FS</button>
     </nav>
 
     <!-- <button id="leftBtn">Left</button>
@@ -301,51 +301,71 @@
             </div>
         </section>
 
-        <button class="thequizbtn" id="quizbtn">Show Quiz</button>
-        <div class="quiz" id="quizpg">
-        <div class="maingrid">
-            <div class="gridquizbanner"></div>
-            <article class="gridquizarticle1">
-                <p>
-                    ˖ ݁♬⋆.˚𝄞. Q U I Z .𝄞˚.⋆♬ ݁˖
-                </p>
-            </article>
-            <article class="gridquizarticle2">
-                <fieldset>
-                    <legend>Which best defines Traditional Animation?</legend>
-                    <input type="radio" name="q1" value="DFE"> Digital frame editing
-                    <input type="radio" name="q1" value="HDF"> Hand-drawn frames
-                    <input type="radio" name="q1" value="PCP"> Paper cutout photos
-                    <input type="radio" name="q1" value="VBD"> Vector-based design
-                </fieldset>
-                <fieldset>
-                    <legend>What defines 3D animation?</legend>
-                    <input type="radio" name="q2" value="MG"> Motion graphics
-                    <input type="radio" name="q2" value="RLVE"> Real-life video editing
-                    <input type="radio" name="q2" value="SDIM"> Simulated depth in motion
-                    <input type="radio" name="q2" value="HD2F"> Hand-drawn 2D frames
-                </fieldset>
-                <fieldset>
-                    <legend>What is Motion graphics best for?</legend>
-                    <input type="radio" name="q3" value="RCA"> Realistic character acting
-                    <input type="radio" name="q3" value="C3M"> Complex 3D modeling
-                    <input type="radio" name="q3" value="VSWD"> Visual storytelling with design
-                    <input type="radio" name="q3" value="MFD"> Manual frame drawing
-                </fieldset>
-                <fieldset>
-                    <legend>Which stop motion technique uses real people as frame-by-frame subjects?</legend>
-                    <input type="radio" name="q4" value="C"> Claymation
-                    <input type="radio" name="q4" value="PA"> Puppet animation
-                    <input type="radio" name="q4" value="CA"> Cutout animation
-                    <input type="radio" name="q4" value="P"> Pixilation
-                </fieldset>
-
-                <button class="forquizbtn" id="btnSubmit">Submit</button>
-                <button class="forquizbtn" id="btnReset">Reset</button>
-                <h3 id="scorebox"></h3>
-            </article>
+        <div class="gamebuttons">
+            <button class="thequizbtn" id="quizbtn">Show Quiz</button>
+            <button class="minigamebtn" id="mgbtn">Minigame</button>
         </div>
-    </div>
+
+        <div class="mini" id="quizpg">
+            <div class="maingrid">
+                <div class="gridsecondbanner"></div>
+                <article class="gridquizarticle1">
+                    <p>
+                        ˖ ݁♬⋆.˚𝄞. Q U I Z .𝄞˚.⋆♬ ݁˖
+                    </p>
+                </article>
+                <article class="gridquizarticle2">
+                    <fieldset>
+                        <legend>Which best defines Traditional Animation?</legend>
+                        <input type="radio" name="q1" value="DFE"> Digital frame editing
+                        <input type="radio" name="q1" value="HDF"> Hand-drawn frames
+                        <input type="radio" name="q1" value="PCP"> Paper cutout photos
+                        <input type="radio" name="q1" value="VBD"> Vector-based design
+                    </fieldset>
+                    <fieldset>
+                        <legend>What defines 3D animation?</legend>
+                        <input type="radio" name="q2" value="MG"> Motion graphics
+                        <input type="radio" name="q2" value="RLVE"> Real-life video editing
+                        <input type="radio" name="q2" value="SDIM"> Simulated depth in motion
+                        <input type="radio" name="q2" value="HD2F"> Hand-drawn 2D frames
+                    </fieldset>
+                    <fieldset>
+                        <legend>What is Motion graphics best for?</legend>
+                        <input type="radio" name="q3" value="RCA"> Realistic character acting
+                        <input type="radio" name="q3" value="C3M"> Complex 3D modeling
+                        <input type="radio" name="q3" value="VSWD"> Visual storytelling with design
+                        <input type="radio" name="q3" value="MFD"> Manual frame drawing
+                    </fieldset>
+                    <fieldset>
+                        <legend>Which stop motion technique uses real people as frame-by-frame subjects?</legend>
+                        <input type="radio" name="q4" value="C"> Claymation
+                        <input type="radio" name="q4" value="PA"> Puppet animation
+                        <input type="radio" name="q4" value="CA"> Cutout animation
+                        <input type="radio" name="q4" value="P"> Pixilation
+                    </fieldset>
+
+                    <button class="forgamebtn" id="btnSubmit">Submit</button>
+                    <button class="forgamebtn" id="btnReset">Reset</button>
+                    <h3 id="scorebox"></h3>
+                </article>
+            </div>
+        </div>
+
+        <div class="mini" id="gamepg">
+            <div class="maingrid">
+                <div class="gridsecondbanner"></div>
+                <article class="gridmini1">
+                    <p>
+                        ˖ ݁♬⋆.˚𝄞. M I N I G A M E .𝄞˚.⋆♬ ݁˖
+                    </p>
+                </article>
+                <article class="gridmini2">
+                    <section class="becomebox" id="dynamicArea">
+                    </section>
+                    <button class="forgamebtn" id="btnResetMini">Reset</button>
+                </article>
+            </div>
+        </div>
     </main>
 
     <footer>

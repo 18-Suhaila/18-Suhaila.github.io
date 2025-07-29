@@ -61,12 +61,12 @@ footer {
     padding-top: 3vh;
     text-align: center;
     font-size: large;
-    color: #F3E4F5;
+    color: #f0d8f7;
 }
 
 /* NAV STUFF */
 nav ul {
-    padding-left: 24vw;
+    padding-left: 24%;
 }
 
 nav ul li {
@@ -96,7 +96,7 @@ main ul li {
 }
 
 .grid2 {
-    padding: 1rem;
+    margin: 0% 0% 0% 5%;
     background: #1a112e;
 }
 
@@ -112,7 +112,7 @@ main ul li {
     background-color: #D8BEE5;
 }
 
-.gridquizbanner {
+.gridsecondbanner {
     grid-column: 1/5;
     grid-row: 1;
     background-color: #5c2576;
@@ -148,6 +148,17 @@ main ul li {
     grid-row: 2;
 }
 
+.gridmini1 {
+    grid-column: 2/4;
+    grid-row: 1;
+    padding-top: 6px;
+    font-size: large;
+}
+.gridmini2 {
+    grid-column: 1/5;
+    grid-row: 2;
+}
+
 /* BUTTONS/PAGES STUFF */
 .page {
     width: auto;
@@ -159,7 +170,7 @@ main ul li {
     color: #7a70a7;
 }
 
-.quiz {
+.mini {
     width: 70vw;
     height: 70vh;
     margin-left: 15vw;
@@ -177,6 +188,13 @@ main ul li {
     overflow: hidden;
 }
 
+.becomebox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: 3%;
+}
+
 button {
     border-color: #2e325b;
     border-radius: 10px;
@@ -192,7 +210,7 @@ button.btn4 {
     height: 100px;
     width: 100px;
     vertical-align: middle;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     transition: all 0.2s ease;
 }
 
@@ -273,38 +291,37 @@ button.btn4:hover {
 }
 
 button.thebtn {
-    margin-left: 23.5rem;
     color: #3D145B;
     background: #f9b7ff;
 }
 
-button.forquizbtn{
-    margin: 0 auto;
+button.forgamebtn {
     color: #c06c4a;
     background: #ffe0ba;
     border-color: #c06c4a;
 }
-button.forquizbtn:hover{
+
+button.forquizbtn:hover {
     color: #ffe0ba;
     background: #c06c4a;
     border-color: #f4e4e1;
 }
 
-button.thequizbtn {
-    margin-left: 37.5rem;
+button.thequizbtn, button.minigamebtn {
+    margin-left: 10%;
     color: #3D145B;
     background: #f9b7ff;
+}
+
+.gamebuttons{
+    display: inline;
+    margin: 0% 0% 0% 27%;
 }
 
 button.thebtn:hover,
 button.thequizbtn:hover {
     color: #f9b7ff;
     background: #3D145B;
-}
-
-.respvid {
-    width: 400px;
-    height: 240px;
 }
 
 
@@ -314,9 +331,48 @@ button.thequizbtn:hover {
     width: 25px;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (min-width:1400px) {
 
-    /*make a menu items vertical*/
+    button.btn1,
+    button.btn2,
+    button.btn3,
+    button.btn4 {
+        height: 180px;
+        width: 180px;
+        font-size: 32px;
+    }
+
+    button.btn1:hover,
+    button.btn2:hover,
+    button.btn3:hover,
+    button.btn4:hover {
+        height: 190px;
+        width: 190px;
+    }
+
+    button.thequizbtn {
+        width: 150px;
+        height: 40px;
+    }
+
+    .maingrid{
+        font-size: x-large;
+    }
+
+    .quiz {
+        height: auto;
+    }
+
+    .animGrid {
+        font-size: x-large;
+    }
+
+    .grid2 {
+        margin: 0% 15% 0% 0%;
+    }
+}
+
+@media screen and (max-width:800px) {
     nav ul li {
         margin: 0.5em;
     }
@@ -352,6 +408,10 @@ button.thequizbtn:hover {
         height: 650vh;
     }
 
+    .maingrid{
+        font-size: x-small;
+    }
+
     .quiz {
         width: 90vw;
         height: 255vh;
@@ -366,6 +426,7 @@ button.thequizbtn:hover {
         text-align: right;
     }
 }
+
 
 /*to unhide menu items*/
 .menuShow {

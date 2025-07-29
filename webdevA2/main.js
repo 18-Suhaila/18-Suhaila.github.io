@@ -4,10 +4,12 @@ const page2btn = document.querySelector("#page2btn");
 const page3btn = document.querySelector("#page3btn");
 const page4btn = document.querySelector("#page4btn");
 const pagequizbtn = document.querySelector("#quizbtn");
+const pageminibtn = document.querySelector("#mgbtn");
 
 var allpages = document.querySelectorAll(".page");
 let currentPage = null;
 let quizVisible = false;
+let gameVisible = false;
 
 /* AUDIO */
 const btn1Aud = new Audio("audio/Button1.mp3");
@@ -24,6 +26,12 @@ function hideall() { //function to hide all pages
         onepage.style.display = "none";
         onepage.classList.add("shrink");
     }
+}
+function hidegames() {
+    document.querySelector("#quizpg").style.display = "none";
+    document.querySelector("#quizpg").classList.add("shrinkW");
+    document.querySelector("#gamepg").style.display = "none";
+    document.querySelector("#gamepg").classList.add("shrinkW");
 }
 
 function show(pgno) { //function to show selected page no
@@ -80,6 +88,30 @@ function toggleTheQuiz() { // hide/show the quiz page
     }
 }
 
+function toggleTheGame() {
+    const game = document.querySelector("#gamepg");
+
+    if (gameVisible) {
+        game.classList.add("shrinkW");
+        // waits for transition first before hiding
+        game.addEventListener("transitionend", function handler() {
+            game.style.display = "none";
+            game.removeEventListener("transitionend", handler);
+        });
+        gameVisible = false;
+        btn2Aud.play();
+    } else {
+        // if quiz is not shown when user presses btn
+        // shows the quiz and remove shrink class
+        game.style.display = "block";
+        setTimeout(() => { // 
+            game.classList.remove("shrinkW");
+        }, 10);
+        gameVisible = true;
+        btn1Aud.play();
+    }
+}
+
 /*Listen for clicks on the buttons, assign anonymous
 eventhandler functions to call show function*/
 page1btn.addEventListener("click", function () {
@@ -97,12 +129,11 @@ page4btn.addEventListener("click", function () {
 pagequizbtn.addEventListener("click", function () {
     toggleTheQuiz()
 });
-
-
+pageminibtn.addEventListener("click", function () {
+    toggleTheGame();
+});
 hideall();
-// seperate from hide all because i dont want them to close together
-document.querySelector("#quizpg").style.display = "none";
-document.querySelector("#quizpg").classList.add("shrinkW");
+hidegames();
 
 const btnSubmit = document.querySelector("#btnSubmit");
 const btnReset = document.querySelector("#btnReset");
@@ -114,21 +145,21 @@ function CheckAns() {
     for (let i = 0; i < corrAnsArray.length; i++) {
         CheckOneQn(i + 1, corrAnsArray[i]);
     }
-    switch (score){
+    switch (score) {
         case 0: scorebox.innerHTML = "0 0 0 0";
-        break;
+            break;
         case 1: scorebox.innerHTML = "You can do better.";
-        s1Aud.play();
-        break;
+            s1Aud.play();
+            break;
         case 2: scorebox.innerHTML = "Half right.";
-        s2Aud.play();
-        break;
+            s2Aud.play();
+            break;
         case 3: scorebox.innerHTML = "Almost all correct!";
-        s3Aud.play();
-        break;
+            s3Aud.play();
+            break;
         case 4: scorebox.innerHTML = "All Correct!";
-        s4Aud.play();
-        break;
+            s4Aud.play();
+            break;
     }
 }
 btnSubmit.addEventListener("click", CheckAns);
@@ -138,7 +169,7 @@ function CheckOneQn(qnNo, CorrAns) {
     console.log(qTemp); //check q1 value retrieved
 }
 btnReset.addEventListener("click", ResetQuiz);
-function ResetQuiz(){
+function ResetQuiz() {
     score = 0;
     scorebox.innerHTML = "";
     for (let i = 1; i <= corrAnsArray.length; i++) {
@@ -146,6 +177,79 @@ function ResetQuiz(){
         for (let radio of radios) {
             radio.checked = false;
         }
+    }
+}
+
+/* MINIGAME */
+const colorArray = ["red", "green", "blue", "pink", "cyan"];
+const dynamicArea = document.querySelector("#dynamicArea");
+
+colorArray.sort(() => Math.random() - 0.5);
+for (let i = 0; i < 24; i++) {
+    var newDiv = document.createElement('div');
+    // Add content and attributes
+    let colorVar = colorArray[Math.floor(Math.random() * colorArray.length)];
+    newDiv.style.width = "80px";
+    newDiv.style.height = "80px";
+    newDiv.style.margin = "10px";
+    newDiv.className = 'new-class';
+    newDiv.id = 'new-id-' + i; //give unique id
+    //make it select in order of colorArray and repeat
+    newDiv.style.background = colorVar;
+    newDiv.dataset.color = colorVar;
+    // Add to the end of the body
+    dynamicArea.appendChild(newDiv);
+    //don't addlistener to child, as it has been delegated to parent
+}
+
+let firstSquare = null;
+//add eventlistner to parent, as delegate
+dynamicArea.addEventListener("click", SomeFn);
+
+function SomeFn(evt) {
+    var clicked = evt.target;
+
+    // ignore if the square is already matched
+    if (clicked.classList.contains('matched')) {
+        return;
+    }
+
+    // if square is selected twice then ignore
+    if (firstSquare === clicked) return;
+
+    // when clicked, white border for visual
+    clicked.style.border = "3px solid white";
+
+    if (!firstSquare) {
+        // if no square is clicked, assign it to first square
+        firstSquare = clicked;
+    } else {
+        // compare colors with firstSelected
+        if (clicked.dataset.color === firstSquare.dataset.color) {
+            // add a class to set 'matched' to the pair
+            clicked.classList.add('matched');
+            firstSquare.classList.add('matched');
+
+            // green border means good yippee
+            clicked.style.background = "white";
+            firstSquare.style.background = "white";
+
+            clicked.textContent = "Matched";
+            firstSquare.textContent = "Matched";
+
+            // set matched squares smaller
+            clicked.style.width = "55px";
+            clicked.style.height = "55px";
+            firstSquare.style.width = "55px";
+            firstSquare.style.height = "55px";
+        } else {
+            // no match, remove border on both squares
+            clicked.style.border = "none";
+            firstSquare.style.border = "none";
+        }
+
+        // reset for the next turn
+        firstSquare = null;
     }
 }
 
@@ -173,121 +277,4 @@ function enterFullscreen() { //must be called by user generated event
 }
 function exitFullscreen() {
     document.exitFullscreen();
-}
-
-
-
-/*find references to all the buttons and ball */
-const leftBtn = document.querySelector("#leftBtn");
-const rightBtn = document.querySelector("#rightBtn");
-const upBtn = document.querySelector("#upBtn");
-const downBtn = document.querySelector("#downBtn");
-const resetBtn = document.querySelector("#resetBtn");
-const ball = document.querySelector("#ball");
-var ballX = ballY = 0; //assign initial position of ball
-function ResetPos() {
-    ballX = ballY = 0; //reset to zero
-    ball.style.left = ballX + "px"; //set left property to ball x variable
-    ball.style.top = ballY + "px"; //set top property to ball x variable
-    ball.innerText = ballX + "," + ballY; //update ball text to show coordinate
-}
-function MovePos(leftInc, topInc) {
-    ballX = ballX + leftInc;
-    ballY = ballY + topInc;
-    ball.style.left = ballX + "px"; //set left css property to ball x variable
-    ball.style.top = ballY + "px"; //set top css property to ball y variable
-    ball.innerText = ballX + "," + ballY; //update ball text to show coordinate
-}
-
-function MoveLeft() {
-    ballX = ballX - 10; //decrement by 10
-    ballY = ballY + 0; //no change
-    ball.style.left = ballX + "px"; //set left css property to ball x variable
-    ball.style.top = ballY + "px"; //set top css property to ball y variable
-    ball.innerText = ballX + "," + ballY; //update ball text to show coordinate
-}
-//eventlistener to activate MoveLeft (named callback function)
-leftBtn.addEventListener("click", MoveLeft); //no brackets after MoveLeft
-//eventListener to anonymous callback function (other way)
-rightBtn.addEventListener("click", function () {
-    MovePos(10, 0);
-});
-upBtn.addEventListener("click", function () {
-    MovePos(0, -10);
-});
-downBtn.addEventListener("click", function () {
-    MovePos(0, 10);
-});
-resetBtn.addEventListener("click", ResetPos);
-
-document.addEventListener('keydown', function (kbEvt) {
-    //kbEvt: an event object passed to callback function
-    console.log(kbEvt); //see what is returned
-    if (kbEvt.code === "ArrowRight") {
-        MovePos(10, 0);
-    }
-    if (kbEvt.code === "ArrowLeft") {
-        MoveLeft();
-    }
-    if (kbEvt.code === "ArrowDown") {
-        MovePos(0, 10);
-    }
-    if (kbEvt.code === "ArrowUp") {
-        MovePos(0, -10);
-    }
-    //Better option: use switch case instead
-});
-
-//define more variables and constants
-var velX, velY;
-const minLeft = minTop = 0;
-const maxTop = maxLeft = 300;
-//function to pick random number from a min-max range
-function RandomRange(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
-}
-//function to activate automove
-function StartAutoMove() {
-    velX = RandomRange(-10, 10);
-    velY = RandomRange(-10, 30);
-    setInterval(MoveIt, 100);
-}
-//callback function for setInterval
-function MoveIt() {
-    MovePos(velX, velY); //move at random velocity picked earlier
-}
-StartAutoMove(); //invoke the function to activate automove
-
-/* Move Pos function with collision check and reaction*/
-function MovePosWifCollision() {
-    ballX += velX;
-    ballY += velY;
-    /*check if reach min/max left/top and flip velocity*/
-    if (ballX > maxLeft) {
-        velX = -velX; //reverse the X velocity
-        ballX = maxLeft; //snap ballX to maxLeft
-        ball.classList.add("ballAnim");
-    }
-    if (ballY > maxTop) {
-        velY = -velY;
-        ballY = maxTop; //snap ballY to maxTop
-        ball.classList.add("ballAnim");
-    }
-    if (ballX < minLeft) {
-        velX = -velX;
-        ballX = minLeft;
-        ball.classList.remove("ballAnim");
-    }
-    if (ballY < minTop) {
-        velY = -velY;
-        ballY = minTop;
-        ball.classList.remove("ballAnim");
-    }
-    UpdateBallStyle();
-}
-//Modify StartAutoMove function
-function StartAutoMove() {
-    velX = RandomRange(-10, 10);
-    velY = RandomRange(-10, 30);
-    setInterval(MovePosWifCollision, 100);
 }
