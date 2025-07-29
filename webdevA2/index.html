@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='main.js' defer></script>
+</head>
+
+<body>
+    <div class="topSection">
+        <div class="empty"></div>
+        <div class="middle">⋆⭒˚｡⋆ ₊˚.⋆☾⋆⁺₊✧ ─── ⋆⋅☆⋅⋆ ─── ✧₊⁺⋆☾⋆.˚₊⋆｡˚⭒⋆</div>
+        <div class="empty"></div>
+    </div>
+
+    <header class="grid1">
+        <div class="animGrid">
+            <h1>Animation</h1>
+            <section>
+                Animation is an illusion of movement, composed of a sequence of still images or frames that are
+                shown at a certain rate, which will make the subject appear as if it is moving. This can be
+                done through several means such as using drawings, models or digital tools.
+            </section>
+        </div>
+    </header>
+
+    <nav class="grid2"> <!--menu system-->
+        <br>
+        <img src="images/hamIcon.png" id="hamIcon">
+        <ul>
+            <li><button class="btn1" id="page1btn">2D Animation</button></li>
+            <li><button class="btn2" id="page2btn">3D Animation</button></li>
+            <li><button class="btn3" id="page3btn">Motion Graphics <br>Animation</button></li>
+            <li><button class="btn4" id="page4btn">Stop Motion Animation</button></li>
+        </ul>
+        <button class="thebtn" id="btnFS">Fullscreen</button>
+        <button class="thebtn" id="btnWS">Exit FS</button>
+    </nav>
+
+    <!-- <button id="leftBtn">Left</button>
+            <button id="rightBtn">Right</button>
+            <button id="upBtn">Up</button>
+            <button id="downBtn">Down</button>
+            <button id="resetBtn">Reset</button>
+            <div id="box">
+                <div id="ball">Ball</div>
+            </div> -->
+
+    <main id="pagecontainer">
+        <section class="page" id="page1">
+            <div class="maingrid">
+                <div class="gridbanner"></div>
+                <div class="gridarticle1">
+                    <h3>What is 2D Animation?</h3>
+                    <p>
+                        2D animation is the art of creating movement in a two-dimensional space. This animation
+                        technique involves characters, backgrounds, and objects that are designed and animated in flat,
+                        two-dimensional environments— typically focusing on height and width, but not depth. Movements
+                        are crafted frame by frame, either through traditional hand-drawing or with the help of digital
+                        tools.
+                    </p>
+                </div>
+
+                <div class="gridarticle2">
+                    <h3>Softwares used for 2D Animation</h3>
+                    <ul>
+                        <li><b>Toon Boom Harmony</b> is a professional-grade animation software used by major studios;
+                            It supports both traditional frame-by-frame animation and rig-based animation, making it
+                            versatile for various styles.</li>
+                        <li><b>Adobe Animate</b> (formerly Flash) is a popular tool for creating interactive animations
+                            for web and games. It allows both frame-by-frame and tween-based animation, making it
+                            accessible for both beginners and professionals.</li>
+                        <li><b>Adobe After Effects</b> is not a traditional animation tool, but it is widely used for
+                            motion graphics, compositing, and 2D animation with a more cinematic or layered effect,
+                            ideal for animated intros, transitions, and visual storytelling.</li>
+                    </ul>
+                </div>
+
+                <div class="gridarticle3">
+                    <h3>Types of 2D Animation</h3>
+                    <h4>Traditional Animation [Hand-drawn]</h4>
+                    <p>
+                        A classic method where each frame is meticulously drawn by hand. In some workflows, animators
+                        use cels (transparent sheets) to separate character and background layers, streamlining the
+                        production process. Though labor-intensive, this method allows for a high level of artistic
+                        expression and fluid motion.
+                    </p>
+
+                    <h4>Digital Animation</h4>
+                    <p>
+                        Digital tools replicate the frame-by-frame process using drawing tablets and software. It allows
+                        for faster production, easier editing, and reuse of assets (like rigs, backgrounds, or symbols).
+                        It blends traditional techniques with the convenience of modern technology.
+                    </p>
+
+                    <h4>Stop Motion Animation (2D Style)</h4>
+                    <p>
+                        A method where real-world, flat materials like cut-out paper, drawings, or puppets are
+                        physically moved and photographed one frame at a time. This creates a 2D animated effect with a
+                        tangible, handmade feel. Think of it as a hybrid of puppetry and animation—films.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page" id="page2">
+            <div class="maingrid">
+                <div class="gridbanner"></div>
+                <article class="gridarticle1">
+                    <h3>What is 3D Animation?</h3>
+                    <p>
+                        3D animation is the technique of creating moving, three-dimensional images in a digital context.
+                        These visuals are made using 3D software, allowing animators to create computerized objects that
+                        look 3D even though they're on a 2D surface.
+                    </p>
+                </article>
+
+                <article class="gridarticle2">
+                    <h3>Softwares used for 3D Animation</h3>
+                    <ul>
+                        <li><b>Autodesk Maya</b> is one of the industry standards for 3D modeling and animation; offers
+                            a
+                            comprehensive set of tools from character rigging and motion graphics to visual effects.
+                            Popular among professional animators and studios.</li>
+                        <li><b>Cinema 4D</b> is known for its user-friendly interface and powerful motion graphics
+                            capabilities; often used in broadcast, advertising, and design industries.</li>
+                        <li><b>Blender</b> is a free and open-source 3D creation suite, supporting modeling, rigging,
+                            animation, simulation, rendering, compositing, and video editing.</li>
+                    </ul>
+                </article>
+
+                <article class="gridarticle3">
+                    <h3>Types of 3D Animation</h3>
+                    <h4>Character Animation</h4>
+                    <p>
+                        Gives life to digital characters. Through techniques like rigging (creating a skeleton for the
+                        character) and keyframing (defining movement at specific frames), characters do a lot of things
+                        and display a range of emotions. Character animation is the cornerstone of animated films, TV
+                        shows, and video games where storytelling and emotional engagement are critical.
+                    </p>
+
+                    <h4>Motion Capture (MoCap)</h4>
+                    <p>
+                        Motion capture technology records the movements of real-life actors using sensors or cameras.
+                        They are then mapped onto 3D digital models, allowing for realistic animation of characters.
+                        MoCap is widely used in films and in AAA video games to create fluid and natural movements.
+                    </p>
+
+                    <h4>Mechanical and Object Animation</h4>
+                    <p>
+                        Besides characters, 3D animation is used to animate machines, vehicles, or any non-living
+                        objects. This is common in product visualizations, commercials, and technical demonstrations,
+                        where showing the function or design of an object is essential.
+                    </p>
+
+                    <h4>Visual Effects (VFX)</h4>
+                    <p>
+                        3D animation plays a major role in creating stunning visual effects like explosions, smoke,
+                        water, and magical phenomena. These effects are integrated with live-action footage to enhance
+                        storytelling and realism.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="page" id="page3">
+            <div class="maingrid">
+                <div class="gridbanner"></div>
+                <article class="gridarticle1">
+                    <h3>What is Motion Graphics Animation?</h3>
+                    <p>
+                        Motion graphics animation combines graphic design and animation principles to create moving
+                        visual elements. It is animated graphic design, using text, shapes, and other visual elements
+                        set in motion to convey information, tell stories, or enhance a visual experience.
+                    </p>
+                </article>
+
+                <article class="gridarticle2">
+                    <h3>Softwares used for Motion Graphics</h3>
+                    <ul>
+                        <li><b>Adobe After Effects</b> allows designers to animate, edit, and composite visual elements
+                            with precision. Its keyframe system, expression scripting, and seamless integration with
+                            Adobe Illustrator and Photoshop make it ideal for professional motion design.</li>
+                        <li><b>Adobe Animate</b> may be traditionally used for 2D character animation, but it can also
+                            be used for vector-based motion graphics, especially in web or interactive contexts.</li>
+                        <li><b>Canva and other Online Editors</b> offer basic motion graphic tools for creating social
+                            media animations and promotional videos without needing deep animation skills.</li>
+                    </ul>
+                </article>
+
+                <article class="gridarticle3">
+                    <h3>What are they used for?</h3>
+                    <h4>Explanation Videos</h4>
+                    <p>
+                        Motion graphics is used to simplify complex ideas or processes, often seen
+                        in educational or product demo videos, where animated visuals help break down information,
+                        which make it more engaging and easier to understand.
+                    </p>
+
+                    <h4>Advertising</h4>
+                    <p>
+                        Brands use motion graphics to create eye-catching ads, product showcases, and promotional
+                        content. Animated logos, kinetic typography, and product highlight reels are all examples. These
+                        animations are ideal for social media, TV commercials, and website headers, where grabbing
+                        attention quickly is key.
+                    </p>
+
+                    <h4>Website UX/UI Design</h4>
+                    <p>
+                        In user experience (UX) design, motion graphics enhance interactivity and flow. Examples include
+                        animated buttons, loading indicators, scroll-triggered effects, and smooth page transitions.
+                        These animations make the interface feel responsive and polished while subtly guiding the user's
+                        actions.
+                    </p>
+
+                    <h4>Retail Experiences</h4>
+                    <p>
+                        In physical spaces such as stores, trade shows, or events, motion graphics are used in digital
+                        signage, interactive touchscreens, and product showcases. These animations draw attention,
+                        enhance the shopping experience, and reinforce brand identity.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="page" id="page4">
+            <div class="maingrid">
+                <div class="gridbanner"></div>
+                <article class="gridarticle1">
+                    <h3>What is Stop Motion Animation?</h3>
+                    <p>
+                        Stop motion animation is a technique that brings static physical objects to life by
+                        photographing them one frame at a time. As each frame is played back in rapid succession, the
+                        illusion of motion is created—much like an advanced, real-world flipbook. Stop motion relies on
+                        tangible materials like clay, puppets, paper, or even people. This hands-on approach gives stop
+                        motion a distinct charm, often characterized by slightly jerky, handmade motion.
+                    </p>
+                </article>
+
+                <article class="gridarticle2">
+                    <h3>How it works</h3>
+                    <p>
+                        Stop motion animation is made by capturing individual frames of objects or characters that are
+                        physically adjusted in tiny increments between each photo. Each adjustment represents a single
+                        frame of animation. When these frames are compiled and played at a standard frame rate (12 to
+                        24fps), the movement appears fluid to the human eye.
+                    </p>
+                    <br>
+                    <p>Key steps include:</p>
+
+                    <ul>
+                        <li><b>Planning</b>: Storyboarding and designing characters/sets.</li>
+                        <li><b>Set Building</b>: Creating a physical environment where the animation takes place.</li>
+                        <li><b>Animation</b>: Moving the objects slightly, frame by frame, and taking a photo at each
+                            step.</li>
+                        <li><b>Post-Production</b>: Editing the footage, adding sound, visual effects, or digital
+                            enhancements.</li>
+                    </ul>
+                    </p>
+                    <!-- <iframe class="respvid" src="https://www.youtube.com/embed/wVjMFU11hVA?si=ZGwvXqyCyhp10bKC"></iframe> -->
+                </article>
+
+                <article class="gridarticle3">
+                    <h3>Types of Stop Motion Animation</h3>
+                    <h4>Claymation</h4>
+                    <p>
+                        Claymation is a form of stop motion where characters and scenes are made out of malleable clay
+                        or plasticine. Animators sculpt and reshape the figures between frames, creating expressive and
+                        organic movement. Due to the flexible nature of clay, characters can show exaggerated emotions
+                        or transform shapes easily— though it requires great care to avoid smudging or unintended
+                        distortions.
+                    </p>
+
+                    <h4>Puppet</h4>
+                    <p>
+                        Puppet animation involves articulated puppets, often with wire armatures or joints, posed in a
+                        miniature physical set. Each frame is captured as the puppet is slightly moved to simulate
+                        motion. This type of animation is often used for fantasy films or children's stories due to its
+                        theatrical, lifelike quality.
+                    </p>
+
+                    <h4>Pixilation</h4>
+                    <p>
+                        Pixilation stop motion technique where real human actors are used as frame-by-frame subjects.
+                        The actors pose repeatedly for each frame, giving the illusion that people are moving in
+                        unnatural, animated ways. This surreal effect has been used in both experimental films and music
+                        videos. It's a playful and visually striking approach that blurs the line between live-action
+                        and animation.
+                    </p>
+
+                    <h4>Cutout</h4>
+                    <p>
+                        Cutout animation uses flat characters, props, and environments—often made from paper, card, or
+                        photographs—manipulated frame-by-frame on a flat surface or lightbox. This method was used in
+                        early animation and is notable for its stylistic simplicity.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <button class="thequizbtn" id="quizbtn">Show Quiz</button>
+        <div class="quiz" id="quizpg">
+        <div class="maingrid">
+            <div class="gridquizbanner"></div>
+            <article class="gridquizarticle1">
+                <p>
+                    ˖ ݁♬⋆.˚𝄞. Q U I Z .𝄞˚.⋆♬ ݁˖
+                </p>
+            </article>
+            <article class="gridquizarticle2">
+                <fieldset>
+                    <legend>Which best defines Traditional Animation?</legend>
+                    <input type="radio" name="q1" value="DFE"> Digital frame editing
+                    <input type="radio" name="q1" value="HDF"> Hand-drawn frames
+                    <input type="radio" name="q1" value="PCP"> Paper cutout photos
+                    <input type="radio" name="q1" value="VBD"> Vector-based design
+                </fieldset>
+                <fieldset>
+                    <legend>What defines 3D animation?</legend>
+                    <input type="radio" name="q2" value="MG"> Motion graphics
+                    <input type="radio" name="q2" value="RLVE"> Real-life video editing
+                    <input type="radio" name="q2" value="SDIM"> Simulated depth in motion
+                    <input type="radio" name="q2" value="HD2F"> Hand-drawn 2D frames
+                </fieldset>
+                <fieldset>
+                    <legend>What is Motion graphics best for?</legend>
+                    <input type="radio" name="q3" value="RCA"> Realistic character acting
+                    <input type="radio" name="q3" value="C3M"> Complex 3D modeling
+                    <input type="radio" name="q3" value="VSWD"> Visual storytelling with design
+                    <input type="radio" name="q3" value="MFD"> Manual frame drawing
+                </fieldset>
+                <fieldset>
+                    <legend>Which stop motion technique uses real people as frame-by-frame subjects?</legend>
+                    <input type="radio" name="q4" value="C"> Claymation
+                    <input type="radio" name="q4" value="PA"> Puppet animation
+                    <input type="radio" name="q4" value="CA"> Cutout animation
+                    <input type="radio" name="q4" value="P"> Pixilation
+                </fieldset>
+
+                <button class="forquizbtn" id="btnSubmit">Submit</button>
+                <button class="forquizbtn" id="btnReset">Reset</button>
+                <h3 id="scorebox"></h3>
+            </article>
+        </div>
+    </div>
+    </main>
+
+    <footer>
+        . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁. 02_NurSuhaila_244567P . ݁₊ ⊹ . ݁ ⟡ ݁ . ⊹ ₊ ݁.
+    </footer>
+</body>
+
+</html>

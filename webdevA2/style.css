@@ -8,8 +8,7 @@ h1,
 h2,
 h3,
 h4 {
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin: 5px 0px 15px 0px
 }
 
 p {
@@ -47,10 +46,21 @@ header {
     text-align: center;
 }
 
+fieldset {
+    margin: 1% 8% 1% 8%;
+    border: solid #f9c2dd;
+}
+
+input {
+    margin-left: 20px;
+    margin: 1% 0 1% 0;
+}
+
 footer {
     height: 10vh;
     padding-top: 3vh;
     text-align: center;
+    font-size: large;
     color: #F3E4F5;
 }
 
@@ -66,8 +76,7 @@ nav ul li {
 
 main ul li {
     list-style-type: none;
-    margin-right: 5%;
-    margin-bottom: 2%;
+    margin: 0% 5% 2% 0%
 }
 
 /* GRID STUFFS */
@@ -103,6 +112,13 @@ main ul li {
     background-color: #D8BEE5;
 }
 
+.gridquizbanner {
+    grid-column: 1/5;
+    grid-row: 1;
+    background-color: #5c2576;
+    color: #e6cbf3;
+}
+
 .gridarticle1 {
     grid-column: 2/4;
     grid-row: 1;
@@ -120,10 +136,23 @@ main ul li {
     grid-row: 2;
 }
 
+.gridquizarticle1 {
+    grid-column: 2/4;
+    grid-row: 1;
+    padding-top: 6px;
+    font-size: large;
+}
+
+.gridquizarticle2 {
+    grid-column: 1/5;
+    grid-row: 2;
+}
+
 /* BUTTONS/PAGES STUFF */
 .page {
     width: auto;
-    height: 90vh;
+    height: 110vh;
+    margin: 0 auto;
     transition: all 0.5s;
     text-align: center;
     background-color: #E8DAF0;
@@ -131,12 +160,21 @@ main ul li {
 }
 
 .quiz {
-    width: auto;
-    height: 90vh;
+    width: 70vw;
+    height: 70vh;
+    margin-left: 15vw;
     transition: all 0.5s;
+    /* to make the transition go from center to sides */
+    transform-origin: center;
     text-align: center;
-    background-color: #E8DAF0;
-    color: #7a70a7;
+    background-color: #a34874;
+    color: #f9c2dd;
+    border: solid #f9c2dd;
+    /* curve the sides*/
+    border-radius: 10px;
+    /* make thinner */
+    border-width: 1.5px;
+    overflow: hidden;
 }
 
 button {
@@ -240,7 +278,26 @@ button.thebtn {
     background: #f9b7ff;
 }
 
-button.thebtn:hover {
+button.forquizbtn{
+    margin: 0 auto;
+    color: #c06c4a;
+    background: #ffe0ba;
+    border-color: #c06c4a;
+}
+button.forquizbtn:hover{
+    color: #ffe0ba;
+    background: #c06c4a;
+    border-color: #f4e4e1;
+}
+
+button.thequizbtn {
+    margin-left: 37.5rem;
+    color: #3D145B;
+    background: #f9b7ff;
+}
+
+button.thebtn:hover,
+button.thequizbtn:hover {
     color: #f9b7ff;
     background: #3D145B;
 }
@@ -279,6 +336,14 @@ button.thebtn:hover {
         margin-left: 15vw;
     }
 
+    button.thequizbtn {
+        margin-left: 10rem;
+    }
+
+    .gridquizarticle1 {
+        grid-column: 1/5;
+    }
+
     div.middle {
         font-size: small;
     }
@@ -287,17 +352,18 @@ button.thebtn:hover {
         height: 650vh;
     }
 
+    .quiz {
+        width: 90vw;
+        height: 255vh;
+        margin: 0 auto;
+    }
+
     .gridarticle2 {
         text-align: left;
     }
 
     .gridarticle3 {
         text-align: right;
-    }
-
-    .respvid {
-        width: 200px;
-        height: 150px;
     }
 }
 
@@ -308,6 +374,11 @@ button.thebtn:hover {
 
 .shrink {
     height: 1vh;
+    opacity: 0;
+}
+
+.shrinkW {
+    transform: scaleX(0);
     opacity: 0;
 }
 

@@ -9,6 +9,15 @@ var allpages = document.querySelectorAll(".page");
 let currentPage = null;
 let quizVisible = false;
 
+/* AUDIO */
+const btn1Aud = new Audio("audio/Button1.mp3");
+const btn2Aud = new Audio("audio/Button2.mp3");
+
+const s1Aud = new Audio("audio/Score1.mp3");
+const s2Aud = new Audio("audio/Score2.mp3");
+const s3Aud = new Audio("audio/Score3.mp3");
+const s4Aud = new Audio("audio/Score4.mp3");
+
 //select all subtopic pages
 function hideall() { //function to hide all pages
     for (let onepage of allpages) {
@@ -18,14 +27,6 @@ function hideall() { //function to hide all pages
 }
 
 function show(pgno) { //function to show selected page no
-    // hideall();
-    // let onepage = document.querySelector("#page" + pgno);
-    // onepage.style.display = "block";
-
-    // // let block code go first then remove the shrink [aka let it transition]
-    // setTimeout(function() {
-    //     onepage.classList.remove("shrink");
-    // }, 10);
     const pageId = "page" + pgno;
     const selectedPage = document.querySelector("#" + pageId);
 
@@ -40,35 +41,42 @@ function show(pgno) { //function to show selected page no
         });
 
         currentPage = null;
+        btn2Aud.play();
     } else {
-        // Animate opening
-        hideall(); // will add shrink + hide all pages
+        hideall();
         selectedPage.style.display = "block";
 
         setTimeout(function () {
             selectedPage.classList.remove("shrink");
         }, 10);
-
         currentPage = selectedPage;
+        btn1Aud.play();
     }
 }
 
-function toggleTheQuiz() {
+function toggleTheQuiz() { // hide/show the quiz page
     const quiz = document.querySelector("#quizpg");
 
     if (quizVisible) {
-        quiz.classList.add("shrink");
+        // if the quiz is showing when user presses the button
+        // adds the shrink class
+        quiz.classList.add("shrinkW");
+        // waits for transition first before hiding
         quiz.addEventListener("transitionend", function handler() {
             quiz.style.display = "none";
             quiz.removeEventListener("transitionend", handler);
         });
         quizVisible = false;
+        btn2Aud.play();
     } else {
+        // if quiz is not shown when user presses btn
+        // shows the quiz and remove shrink class
         quiz.style.display = "block";
-        setTimeout(() => {
-            quiz.classList.remove("shrink");
+        setTimeout(() => { // 
+            quiz.classList.remove("shrinkW");
         }, 10);
         quizVisible = true;
+        btn1Aud.play();
     }
 }
 
@@ -89,9 +97,57 @@ page4btn.addEventListener("click", function () {
 pagequizbtn.addEventListener("click", function () {
     toggleTheQuiz()
 });
+
+
 hideall();
+// seperate from hide all because i dont want them to close together
 document.querySelector("#quizpg").style.display = "none";
-document.querySelector("#quizpg").classList.add("shrink");
+document.querySelector("#quizpg").classList.add("shrinkW");
+
+const btnSubmit = document.querySelector("#btnSubmit");
+const btnReset = document.querySelector("#btnReset");
+const scorebox = document.querySelector("#scorebox");
+var score = 0;
+corrAnsArray = ["HDF", "SDIM", "VSWD", "P"];
+function CheckAns() {
+    score = 0; //reset score to 0, check ans and give score if correct
+    for (let i = 0; i < corrAnsArray.length; i++) {
+        CheckOneQn(i + 1, corrAnsArray[i]);
+    }
+    switch (score){
+        case 0: scorebox.innerHTML = "0 0 0 0";
+        break;
+        case 1: scorebox.innerHTML = "You can do better.";
+        s1Aud.play();
+        break;
+        case 2: scorebox.innerHTML = "Half right.";
+        s2Aud.play();
+        break;
+        case 3: scorebox.innerHTML = "Almost all correct!";
+        s3Aud.play();
+        break;
+        case 4: scorebox.innerHTML = "All Correct!";
+        s4Aud.play();
+        break;
+    }
+}
+btnSubmit.addEventListener("click", CheckAns);
+function CheckOneQn(qnNo, CorrAns) {
+    qTemp = document.querySelector("input[name='q" + qnNo + "']:checked").value;
+    if (qTemp == CorrAns) score++;
+    console.log(qTemp); //check q1 value retrieved
+}
+btnReset.addEventListener("click", ResetQuiz);
+function ResetQuiz(){
+    score = 0;
+    scorebox.innerHTML = "";
+    for (let i = 1; i <= corrAnsArray.length; i++) {
+        let radios = document.getElementsByName("q" + i);
+        for (let radio of radios) {
+            radio.checked = false;
+        }
+    }
+}
 
 /*JS for hamMenu */
 const hamBtn = document.querySelector("#hamIcon");
