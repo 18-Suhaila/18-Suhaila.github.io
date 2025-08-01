@@ -5,22 +5,22 @@
 
 @font-face {
     font-family: 'rainbow';
-    src: url('../02_NurSuhailaBinteIsmail_244567P_A2/fonts/DrawingRainbow.otf') format('truetype');
+    src: url('../webdevA2/fonts/DrawingRainbow.otf') format('truetype');
 }
 
 @font-face {
     font-family: 'pgrass';
-    src: url('../02_NurSuhailaBinteIsmail_244567P_A2/fonts/PineappleGrass.ttf') format('truetype');
+    src: url('../webdevA2/fonts/PineappleGrass.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'vivid';
-    src: url('../02_NurSuhailaBinteIsmail_244567P_A2/fonts/VividlyRegular.ttf') format('truetype');
+    src: url('../webdevA2/fonts/VividlyRegular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'play';
-    src: url('../02_NurSuhailaBinteIsmail_244567P_A2/fonts/LetsPlay.ttf') format('truetype');
+    src: url('../webdevA2/fonts/LetsPlay.ttf') format('truetype');
 }
 
 
@@ -59,6 +59,7 @@ footer {
     text-align: center;
     font-size: large;
     color: #f0d8f7;
+    font-family: 'pgrass', sans-serif;
 }
 
 main ul li {
