@@ -20,6 +20,9 @@ const s2Aud = new Audio("audio/Score2.mp3");
 const s3Aud = new Audio("audio/Score3.mp3");
 const s4Aud = new Audio("audio/Score4.mp3");
 
+const m1Aud = new Audio("audio/Matched.mp3");
+const m2Aud = new Audio("audio/NoMatch.mp3");
+
 //select all subtopic pages
 function hideall() { //function to hide all pages
     for (let onepage of allpages) {
@@ -127,7 +130,7 @@ page4btn.addEventListener("click", function () {
     show(4);
 });
 pagequizbtn.addEventListener("click", function () {
-    toggleTheQuiz()
+    toggleTheQuiz();
 });
 pageminibtn.addEventListener("click", function () {
     toggleTheGame();
@@ -139,7 +142,7 @@ const btnSubmit = document.querySelector("#btnSubmit");
 const btnReset = document.querySelector("#btnReset");
 const scorebox = document.querySelector("#scorebox");
 var score = 0;
-corrAnsArray = ["HDF", "SDIM", "VSWD", "P"];
+var corrAnsArray = ["HDF", "SDIM", "VSWD", "P"];
 function CheckAns() {
     score = 0; //reset score to 0, check ans and give score if correct
     for (let i = 0; i < corrAnsArray.length; i++) {
@@ -148,47 +151,61 @@ function CheckAns() {
     switch (score) {
         case 0: scorebox.innerHTML = "0 0 0 0";
             break;
-        case 1: scorebox.innerHTML = "You can do better.";
+        case 1: scorebox.innerHTML = "Try Again?";
             s1Aud.play();
             break;
-        case 2: scorebox.innerHTML = "Half right.";
+        case 2: scorebox.innerHTML = "Half Right.";
             s2Aud.play();
             break;
-        case 3: scorebox.innerHTML = "Almost all correct!";
+        case 3: scorebox.innerHTML = "Almost There!";
             s3Aud.play();
             break;
-        case 4: scorebox.innerHTML = "All Correct!";
+        case 4: scorebox.innerHTML = "Yaay!";
             s4Aud.play();
             break;
     }
 }
-btnSubmit.addEventListener("click", CheckAns);
 function CheckOneQn(qnNo, CorrAns) {
-    qTemp = document.querySelector("input[name='q" + qnNo + "']:checked").value;
+    const qTemp = document.querySelector("input[name='q" + qnNo + "']:checked").value;
     if (qTemp == CorrAns) score++;
     console.log(qTemp); //check q1 value retrieved
 }
-btnReset.addEventListener("click", ResetQuiz);
 function ResetQuiz() {
     score = 0;
     scorebox.innerHTML = "";
     for (let i = 1; i <= corrAnsArray.length; i++) {
-        let radios = document.getElementsByName("q" + i);
+        let radios = document.querySelectorAll('input[name="q' + i + '"]');
         for (let radio of radios) {
             radio.checked = false;
         }
     }
 }
+btnSubmit.addEventListener("click", function () {
+    CheckAns();
+});
+btnReset.addEventListener("click", function () {
+    ResetQuiz();
+});
 
 /* MINIGAME */
-const colorArray = ["red", "green", "blue", "pink", "cyan"];
+const colorArray = ["#FF7721", "#0077DD", "#00BBDC", "#FF679A"];
 const dynamicArea = document.querySelector("#dynamicArea");
+const totalSquares = 24;
 
-colorArray.sort(() => Math.random() - 0.5);
-for (let i = 0; i < 24; i++) {
+// add the colours into an array and make it equal so there's no duplicates
+let colors = [];
+while (colors.length < totalSquares) {
+    for (let i = 0; i < colorArray.length && colors.length < totalSquares; i++) {
+        colors[colors.length] = colorArray[i];
+    }
+}
+// shuffle all the colours in the array
+colors.sort(() => Math.random() - 0.5);
+
+for (let i = 0; i < totalSquares; i++) {
     var newDiv = document.createElement('div');
     // Add content and attributes
-    let colorVar = colorArray[Math.floor(Math.random() * colorArray.length)];
+    let colorVar = colors[i];
     newDiv.style.width = "80px";
     newDiv.style.height = "80px";
     newDiv.style.margin = "10px";
@@ -204,9 +221,9 @@ for (let i = 0; i < 24; i++) {
 
 let firstSquare = null;
 //add eventlistner to parent, as delegate
-dynamicArea.addEventListener("click", SomeFn);
+dynamicArea.addEventListener("click", Match);
 
-function SomeFn(evt) {
+function Match(evt) {
     var clicked = evt.target;
 
     // ignore if the square is already matched
@@ -226,6 +243,7 @@ function SomeFn(evt) {
     } else {
         // compare colors with firstSelected
         if (clicked.dataset.color === firstSquare.dataset.color) {
+            m1Aud.play();
             // add a class to set 'matched' to the pair
             clicked.classList.add('matched');
             firstSquare.classList.add('matched');
@@ -234,8 +252,8 @@ function SomeFn(evt) {
             clicked.style.background = "white";
             firstSquare.style.background = "white";
 
-            clicked.textContent = "Matched";
-            firstSquare.textContent = "Matched";
+            clicked.textContent = "🎨";
+            firstSquare.textContent = "🎨";
 
             // set matched squares smaller
             clicked.style.width = "55px";
@@ -243,6 +261,7 @@ function SomeFn(evt) {
             firstSquare.style.width = "55px";
             firstSquare.style.height = "55px";
         } else {
+            m2Aud.play();
             // no match, remove border on both squares
             clicked.style.border = "none";
             firstSquare.style.border = "none";
@@ -250,6 +269,26 @@ function SomeFn(evt) {
 
         // reset for the next turn
         firstSquare = null;
+    }
+}
+
+const miniresetbtn = document.querySelector("#btnResetMini");
+miniresetbtn.addEventListener("click", ResetMini);
+function ResetMini() {
+    // Reshuffle the colors
+    colors.sort(() => Math.random() - 0.5);
+    const Squares = dynamicArea.querySelectorAll('.new-class');
+
+    for (let i = 0; i < Squares.length; i++) {
+        const square = Squares[i];
+        const color = colors[i];
+        square.classList.remove('matched');
+        square.style.border = "none";
+        square.style.background = color;
+        square.dataset.color = color;
+        square.style.width = "80px";
+        square.style.height = "80px";
+        square.textContent = "";
     }
 }
 
@@ -273,8 +312,24 @@ const btnWS = document.querySelector("#btnWS");
 btnFS.addEventListener("click", enterFullscreen);
 btnWS.addEventListener("click", exitFullscreen);
 function enterFullscreen() { //must be called by user generated event
-    document.documentElement.requestFullscreen();
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+    }
 }
 function exitFullscreen() {
-    document.exitFullscreen();
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, and Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
 }
