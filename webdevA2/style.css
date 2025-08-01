@@ -185,7 +185,7 @@ nav ul li {
 /* PAGES/BUTTONS STUFF */
 .page {
     width: auto;
-    height: 160vh;
+    height: 950px;
     margin: 0 auto;
     transition: all 0.5s;
     text-align: center;
@@ -337,6 +337,13 @@ button.minigamebtn {
     width: 200%;
 }
 
+.smallqr{
+    width: 100px;
+    display: block;
+    /* auto left and right, top 10px*/
+    margin: 10px auto 0;
+}
+
 .texttotop {
     color: #f9b7ff;
 }
@@ -422,10 +429,6 @@ button.minigamebtn {
         font-size: medium;
     }
 
-    .page {
-        height: 480vh;
-    }
-
     .maingrid {
         font-size: x-small;
     }
@@ -468,6 +471,10 @@ button.minigamebtn {
         grid-column: 1/5;
         font-size: medium;
     }
+
+    .smallqr{
+    display: none;
+}
 }
 
 

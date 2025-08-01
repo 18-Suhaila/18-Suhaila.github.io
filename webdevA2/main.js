@@ -83,7 +83,7 @@ function toggleTheQuiz() { // hide/show the quiz page
         // if quiz is not shown when user presses btn
         // shows the quiz and remove shrink class
         quiz.style.display = "block";
-        setTimeout(() => { // 
+        setTimeout(() => {
             quiz.classList.remove("shrinkW");
         }, 10);
         quizVisible = true;
@@ -173,6 +173,7 @@ function CheckOneQn(qnNo, CorrAns) {
 function ResetQuiz() {
     score = 0;
     scorebox.innerHTML = "";
+    // uncheck all the radio buttons
     for (let i = 1; i <= corrAnsArray.length; i++) {
         let radios = document.querySelectorAll('input[name="q' + i + '"]');
         for (let radio of radios) {
@@ -200,7 +201,7 @@ while (colors.length < totalSquares) {
     }
 }
 // shuffle all the colours in the array
-colors.sort(() => Math.random() - 0.5);
+colors.sort(function () { return 0.5 - Math.random(); });
 
 for (let i = 0; i < totalSquares; i++) {
     var newDiv = document.createElement('div');
@@ -217,6 +218,33 @@ for (let i = 0; i < totalSquares; i++) {
     // Add to the end of the body
     dynamicArea.appendChild(newDiv);
     //don't addlistener to child, as it has been delegated to parent
+}
+
+// shuffle every three seconds
+setInterval(shuffleColors, 3000);
+
+function shuffleColors() {
+    const squares = dynamicArea.querySelectorAll('.new-class');
+
+    // get colours from the current squares
+    // then shuffle it
+    let currentColors = [];
+    for (let i = 0; i < squares.length; i++) {
+        currentColors[i] = squares[i].dataset.color;
+    }
+    currentColors.sort(function () { return 0.5 - Math.random(); });
+
+    // put back the colours back into the squares
+    // skip matched squares bcuz they're already matched
+    for (let i = 0; i < squares.length; i++) {
+        const sq = squares[i];
+        const newColor = currentColors[i];
+
+        if (!sq.classList.contains('matched')) {
+            sq.dataset.color = newColor;
+            sq.style.background = newColor;
+        }
+    }
 }
 
 let firstSquare = null;
@@ -248,35 +276,30 @@ function Match(evt) {
             clicked.classList.add('matched');
             firstSquare.classList.add('matched');
 
-            // green border means good yippee
+            // white bg for matched
             clicked.style.background = "white";
             firstSquare.style.background = "white";
 
+            // emoji because i don't like the empty, plain white bg
             clicked.textContent = "🎨";
             firstSquare.textContent = "🎨";
-
-            // set matched squares smaller
-            clicked.style.width = "55px";
-            clicked.style.height = "55px";
-            firstSquare.style.width = "55px";
-            firstSquare.style.height = "55px";
         } else {
             m2Aud.play();
             // no match, remove border on both squares
             clicked.style.border = "none";
             firstSquare.style.border = "none";
         }
-
-        // reset for the next turn
+        // reset for next matching
         firstSquare = null;
     }
 }
 
 const miniresetbtn = document.querySelector("#btnResetMini");
 miniresetbtn.addEventListener("click", ResetMini);
-function ResetMini() {
-    // Reshuffle the colors
-    colors.sort(() => Math.random() - 0.5);
+function ResetMini() { // shuffle colors and unmatch all matched squares
+    // shuffle colors
+    colors.sort(function () { return 0.5 - Math.random(); });
+    // select the div with 'new-class'- the squaress
     const Squares = dynamicArea.querySelectorAll('.new-class');
 
     for (let i = 0; i < Squares.length; i++) {
@@ -286,8 +309,6 @@ function ResetMini() {
         square.style.border = "none";
         square.style.background = color;
         square.dataset.color = color;
-        square.style.width = "80px";
-        square.style.height = "80px";
         square.textContent = "";
     }
 }
