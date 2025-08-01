@@ -5,22 +5,22 @@
 
 @font-face {
     font-family: 'rainbow';
-    src: url('../webdevA2/fonts/DrawingRainbow.otf') format('truetype');
+    src: url('fonts/DrawingRainbow.otf') format('truetype');
 }
 
 @font-face {
     font-family: 'pgrass';
-    src: url('../webdevA2/fonts/PineappleGrass.ttf') format('truetype');
+    src: url('fonts/PineappleGrass.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'vivid';
-    src: url('../webdevA2/fonts/VividlyRegular.ttf') format('truetype');
+    src: url('fonts/VividlyRegular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'play';
-    src: url('../webdevA2/fonts/LetsPlay.ttf') format('truetype');
+    src: url('fonts/LetsPlay.ttf') format('truetype');
 }
 
 
