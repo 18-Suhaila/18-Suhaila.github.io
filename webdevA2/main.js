@@ -30,7 +30,7 @@ function hideall() { //function to hide all pages
         onepage.classList.add("shrink");
     }
 }
-function hidegames() {
+function hidegames() { //function to hide quiz and minigame
     document.querySelector("#quizpg").style.display = "none";
     document.querySelector("#quizpg").classList.add("shrinkW");
     document.querySelector("#gamepg").style.display = "none";
@@ -56,7 +56,7 @@ function show(pgno) { //function to show selected page no
     } else {
         hideall();
         selectedPage.style.display = "block";
-
+        
         setTimeout(function () {
             selectedPage.classList.remove("shrink");
         }, 10);
@@ -193,12 +193,11 @@ const colorArray = ["#FF7721", "#0077DD", "#00BBDC", "#FF679A"];
 const dynamicArea = document.querySelector("#dynamicArea");
 const totalSquares = 24;
 
-// add the colours into an array and make it equal so there's no duplicates
+// add the four colours into the array until it hits 24
+// colorArray[i % colorArray.length]; -> cycles through the four colours
 let colors = [];
-while (colors.length < totalSquares) {
-    for (let i = 0; i < colorArray.length && colors.length < totalSquares; i++) {
-        colors[colors.length] = colorArray[i];
-    }
+for (let i = 0; i < totalSquares; i++) {
+    colors[colors.length] = colorArray[i % colorArray.length];
 }
 // shuffle all the colours in the array
 colors.sort(function () { return 0.5 - Math.random(); });
@@ -250,7 +249,6 @@ function shuffleColors() {
 let firstSquare = null;
 //add eventlistner to parent, as delegate
 dynamicArea.addEventListener("click", Match);
-
 function Match(evt) {
     var clicked = evt.target;
 
@@ -283,6 +281,7 @@ function Match(evt) {
             // emoji because i don't like the empty, plain white bg
             clicked.textContent = "🎨";
             firstSquare.textContent = "🎨";
+            checkAllMatched();
         } else {
             m2Aud.play();
             // no match, remove border on both squares
@@ -291,6 +290,15 @@ function Match(evt) {
         }
         // reset for next matching
         firstSquare = null;
+    }
+}
+
+function checkAllMatched() { // function to end game
+    const allSq = document.querySelectorAll('.new-class');
+    const matchedSq = document.querySelectorAll('.new-class.matched');
+
+    if (matchedSq.length === allSq.length) {
+        alert("🎉!All Squares Are Matched!🎉");
     }
 }
 

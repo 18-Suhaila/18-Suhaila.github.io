@@ -435,10 +435,6 @@ button.minigamebtn {
         font-size: small;
     }
 
-    .gridquizarticle1 {
-        grid-column: 1/5;
-    }
-
     div.middle {
         font-size: medium;
     }
@@ -511,9 +507,4 @@ button.minigamebtn {
 .shrinkW {
     transform: scaleX(0);
     opacity: 0;
-}
-
-.clearfloat {
-    float: none;
-    /*resets float*/
 }
